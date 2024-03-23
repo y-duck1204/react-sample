@@ -7,15 +7,29 @@
     <script type="text/jsx">
       const app = document.getElementById('app');
 
-      function Header({title}){
-        console.log(title);
-          return <h1>{title}</h1>
+      function createTitle(title){
+        if (title) {
+          return title;
+        } else {
+          return "Default title";
+        }
+      }
+
+      function Header(props){
+        console.log(props.title);
+          return <h1>{createTitle(props.title)}</h1>;
       }
 
       function HomePage(){
+        const names = ["Ada Lavelace","Grace Hopper", "Margaret Hamilton"];
         return (
           <div>
             <Header title="React"/>
+            <ul>
+              {names.map((name) => (
+                <li>{name}</li>
+        ))}
+            </ul>
           </div>
           );
       }
